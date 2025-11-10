@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+     <link rel="icon" href="https://image2url.com/images/1762789403065-73392840-8e4a-449c-a292-14ef1fd85b64.jpeg">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXORA ROLEPLAY | Futuristic SA-MP RP Server</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00aaff;
+            --primary-dark: #0099ff;
+            --accent: #00eeff;
+            --dark-bg: #0a0a15;
+            --darker-bg: #050510;
+            --card-bg: rgba(15, 25, 40, 0.7);
+            --text-light: #e0e0ff;
+            --text-gray: #a0a0c0;
+            --transition: all 0.3s ease;
+            --section-spacing: 100px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: var(--section-spacing);
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            position: relative;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            animation: neonLine 2s infinite alternate;
+        }
+
+        @keyframes neonLine {
+            0% {
+                box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary);
+            }
+            100% {
+                box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+            }
+        }
+
+        /* Enhanced Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, #0a1120 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            overflow: hidden;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .loader-logo {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .loader-logo h1 {
+            font-size: 5rem;
+            background: linear-gradient(to right, #ffffff, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            position: relative;
+            animation: logoPulse 3s infinite alternate;
+            text-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
+        }
+
+        @keyframes logoPulse {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+            }
+            100% {
+                transform: scale(1.05);
+                text-shadow: 0 0 25px rgba(0, 170, 255, 0.8), 0 0 40px rgba(0, 238, 255, 0.4);
+            }
+        }
+
+        .loader-subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            animation: subtitleFade 3s infinite alternate;
+        }
+
+        @keyframes subtitleFade {
+            0% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 1;
+                color: var(--accent);
+            }
+        }
+
+        .loader-bar-container {
+            width: 300px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .loader-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            animation: loading 2.5s ease-in-out forwards;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        @keyframes loading {
+            0% {
+                width: 0%;
+            }
+            20% {
+                width: 25%;
+            }
+            50% {
+                width: 60%;
+            }
+            80% {
+                width: 90%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        .loader-percentage {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .loader-tip {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            max-width: 400px;
+            margin: 0 auto;
+            font-style: italic;
+            animation: tipFade 4s infinite;
+        }
+
+        @keyframes tipFade {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .loader-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .loader-particle {
+            position: absolute;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: loaderFloat 15s infinite linear;
+        }
+
+        @keyframes loaderFloat {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background: rgba(5, 5, 16, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar.scrolled {
+            padding: 15px 0;
+            background: rgba(5, 5, 16, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo h2 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(5, 5, 16, 0.85), rgba(5, 5, 16, 0.9)), url('https://image2url.com/images/1762591911134-48a21e94-03a1-450c-b637-80e570ee78c8.jpeg') no-repeat center center/cover;
+            z-index: -2;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-100px) translateX(100px);
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+            animation: logoGlow 3s infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            0% {
+                filter: drop-shadow(0 0 5px var(--primary));
+            }
+            100% {
+                filter: drop-shadow(0 0 20px var(--primary)) drop-shadow(0 0 30px var(--primary-dark));
+            }
+        }
+
+        .logo h1 {
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .logo p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: rgba(0, 170, 255, 0.2);
+            color: white;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 15px rgba(0, 170, 255, 0.5);
+        }
+
+        .btn-primary:hover {
+            background: rgba(0, 170, 255, 0.4);
+            box-shadow: 0 0 20px var(--primary), 0 0 30px rgba(0, 170, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Image Hero Section */
+        .image-hero {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #111;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            margin: 32px auto;
+            max-width: 1200px;
+        }
+
+        .image-hero img {
+            display: block;
+            width: 100%;
+            height: clamp(280px, 42vh, 560px);
+            object-fit: cover;
+            object-position: center;
+            filter: contrast(0.98) saturate(0.98);
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(6,10,15,0.0) 0%, rgba(6,10,15,0.45) 55%, rgba(6,10,15,0.7) 100%);
+            pointer-events: none;
+        }
+
+        .image-hero-content {
+            position: absolute;
+            left: 24px;
+            right: 24px;
+            bottom: 24px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-end;
+            justify-content: space-between;
+            pointer-events: auto;
+        }
+
+        .image-hero-left {
+            max-width: 75%;
+        }
+
+        .image-hero h1 {
+            margin: 0 0 6px 0;
+            font-size: clamp(18px, 2.4vw, 32px);
+            letter-spacing: 0.2px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 6px 20px rgba(10, 12, 16, 0.6);
+        }
+
+        .image-hero p.lead {
+            margin: 0;
+            font-size: clamp(12px, 1.2vw, 15px);
+            color: #dfe9f3;
+            opacity: 0.95;
+        }
+
+        .image-hero-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .image-hero .btn {
+            appearance: none;
+            border: 0;
+            padding: 10px 14px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            background: var(--primary);
+            color: #022;
+            box-shadow: 0 6px 18px rgba(42,161,242,0.12);
+            transition: transform .12s ease, box-shadow .12s ease;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .image-hero .btn:active {
+            transform: translateY(1px);
+        }
+
+        .image-hero .btn.ghost {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: none;
+        }
+
+        .image-hero .credit {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            font-size: 12px;
+            padding: 6px 10px;
+            border-radius: 9px;
+            background: rgba(0,0,0,0.35);
+            color: #e6eefb;
+            backdrop-filter: blur(6px);
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(rgba(10, 10, 21, 0.9), rgba(10, 10, 21, 0.9)), url('https://images.unsplash.com/photo-1594713119406-6fd032527c18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            position: relative;
+            background-attachment: fixed;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-text {
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+        }
+
+        .rp-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .rp-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px 20px;
+            width: 180px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .rp-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.2);
+            border-color: var(--primary);
+        }
+
+        .rp-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .rp-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Rules Section */
+        .rules {
+            background: linear-gradient(rgba(10, 10, 21, 0.9), rgba(10, 10, 21, 0.9)), url('https://images.unsplash.com/photo-1551524165-23d8e5db8c6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+
+        .rules-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .rule-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .rule-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.2);
+        }
+
+        .rule-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rule-header h3 {
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .rule-icon {
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .rule-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .rule-card.active .rule-content {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        .rule-card.active .rule-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Join Section */
+        .join {
+            background: linear-gradient(rgba(5, 5, 16, 0.9), rgba(5, 5, 16, 0.9)), url('https://images.unsplash.com/photo-1598488033301-8aae8b9cdea2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            text-align: center;
+            background-attachment: fixed;
+        }
+
+        .server-status {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(0, 200, 0, 0.2);
+            padding: 10px 25px;
+            border-radius: 30px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #00ff00;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 255, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
+            }
+        }
+
+        .player-count {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--text-gray);
+        }
+
+        .player-count span {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .join-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Whitelist Section */
+        .whitelist {
+            background: linear-gradient(rgba(10, 10, 21, 0.9), rgba(10, 10, 21, 0.9)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+
+        .whitelist-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whitelist-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .whitelist-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .whitelist-header h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .whitelist-header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        .whitelist-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .whitelist-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(10, 20, 35, 0.5);
+            border-radius: 10px;
+            border-left: 3px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .whitelist-step:hover {
+            background: rgba(10, 20, 35, 0.7);
+            transform: translateX(5px);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .step-content h4 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .step-content p {
+            color: var(--text-gray);
+        }
+
+        .whitelist-actions {
+            text-align: center;
+        }
+
+        .whitelist-btn {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #022;
+            font-weight: bold;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
+        }
+
+        .whitelist-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 170, 255, 0.6);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--dark-bg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0, 170, 255, 0.3));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Gallery Captions */
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gallery Button Section */
+        .gallery-button-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Community Section */
+        .community {
+            background: linear-gradient(rgba(5, 5, 16, 0.9), rgba(5, 5, 16, 0.9)), url('https://image2url.com/images/1762591745555-de1c8b8d-9882-4d39-af9c-4317f7ebc050.jpeg') no-repeat center center/cover;
+            text-align: center;
+            background-attachment: fixed;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.3);
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #050510;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo h2 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .copyright {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 3rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .rp-card {
+                width: 150px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+            
+            .image-hero-content {
+                bottom: 14px;
+                left: 12px;
+                right: 12px;
+                gap: 8px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .image-hero-left {
+                max-width: 100%;
+            }
+            
+            .image-hero-controls {
+                width: 100%;
+            }
+            
+            .image-hero .btn {
+                flex: 1;
+            }
+            
+            .image-hero .credit {
+                font-size: 11px;
+                top: 8px;
+                left: 8px;
+            }
+            
+            .whitelist-container {
+                padding: 30px 20px;
+            }
+            
+            .whitelist-step {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            /* Loader Responsive */
+            .loader-logo h1 {
+                font-size: 3.5rem;
+            }
+            
+            .loader-subtitle {
+                font-size: 1rem;
+            }
+            
+            .loader-bar-container {
+                width: 250px;
+            }
+            
+            /* Navigation */
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(5, 5, 16, 0.95);
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                padding: 20px 0;
+                backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .nav-toggle.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .nav-toggle.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .rp-types {
+                gap: 15px;
+            }
+            
+            .rp-card {
+                width: 130px;
+                padding: 20px 10px;
+            }
+            
+            .cta-buttons, .join-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .whitelist-container {
+                padding: 20px 15px;
+            }
+            
+            .whitelist-header h3 {
+                font-size: 1.7rem;
+            }
+            
+            /* Loader Responsive */
+            .loader-logo h1 {
+                font-size: 2.8rem;
+            }
+            
+            .loader-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 2px;
+            }
+            
+            .loader-bar-container {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="loader-particles" id="loader-particles"></div>
+        <div class="loader-content">
+            <div class="loader-logo">
+                <h1>NEXORA</h1>
+                <div class="loader-subtitle">ROLEPLAY</div>
+            </div>
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+            <div class="loader-percentage" id="loader-percentage">0%</div>
+            <div class="loader-tip" id="loader-tip">Initializing futuristic roleplay experience...</div>
+        </div>
+    </div>
+   
+    <!-- Navigation -->
+     
+    <nav class="navbar" id="navbar">
+         
+        <div class="container nav-container">
+            <div class="nav-logo">
+                <h2>NEXORA</h2>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#rules" class="nav-link">Rules</a></li>
+                <li><a href="#join" class="nav-link">Join</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#community" class="nav-link">Community</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="particles" id="particles"></div>
+        <div class="hero-content">
+            <div class="logo">
+                <h1>NEXORA</h1>
+                <p>ROLEPLAY</p>
+            </div>
+            <p class="tagline">Futuristic SA-MP RP Experience — Join the Revolution.</p>
+            <div class="cta-buttons">
+                <a href="https://chat.whatsapp.com/KLccfi4v1mRFHLQ5WxJ0l8?mode=wwt" class="btn btn-primary" target="_blank">Join Now</a>
+                <a href="https://discord.gg/g6J95ZneG" class="btn btn-secondary" target="_blank">Join Discord</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Hero Section -->
+    <div class="container">
+        <section class="image-hero" aria-label="Nexora Roleplay showcase">
+            <img src="https://image2url.com/images/1762591850738-a54a33d8-6a2f-4a70-a012-fd44af2b8118.jpeg" alt="Futuristic cityscape with neon lights in Nexora Roleplay" loading="lazy" width="1600" height="900" />
+            <div class="image-overlay" aria-hidden="true"></div>
+            <div class="credit">NEXORA ROLEPLAY</div>
+            <div class="image-hero-content">
+                <div class="image-hero-left">
+                    <h1>Welcome to NEXORA — The Future of Roleplay</h1>
+                    <p class="lead">Experience the most immersive futuristic SA-MP roleplay server with cutting-edge features and an active community.</p>
+                </div>
+                <div class="image-hero-controls" role="group" aria-label="hero actions">
+                    <a class="btn ghost" href="#join">Join Server</a>
+                    <a class="btn" href="#gallery">View Gallery</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About NEXORA</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Welcome to NEXORA ROLEPLAY, a dynamic and immersive SA-MP roleplay server set in a futuristic version of Los Santos. Our server offers a unique blend of traditional roleplay elements with cutting-edge features, creating an unparalleled experience for both new and veteran roleplayers.</p>
+                    <p>Whether you're looking to enforce the law as an LSPD officer, build a criminal empire, or live a peaceful civilian life, NEXORA provides the tools and community to bring your story to life.</p>
+                </div>
+                <div class="rp-types">
+                    <div class="rp-card">
+                        <div class="rp-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Police RP</h3>
+                        <p>Enforce the law</p>
+                    </div>
+                    <div class="rp-card">
+                        <div class="rp-icon">
+                            <i class="fas fa-skull"></i>
+                        </div>
+                        <h3>Gang RP</h3>
+                        <p>Build your empire</p>
+                    </div>
+                    <div class="rp-card">
+                        <div class="rp-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3>Civilian RP</h3>
+                        <p>Live your life</p>
+                    </div>
+                    <div class="rp-card">
+                        <div class="rp-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <h3>Mechanic RP</h3>
+                        <p>Fix and customize</p>
+                    </div>
+                    <div class="rp-card">
+                        <div class="rp-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3>EMS RP</h3>
+                        <p>Save lives</p>
+                    </div>
+                    <div class="rp-card">
+                        <div class="rp-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h3>News RP</h3>
+                        <p>Report the truth</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section class="rules" id="rules">
+        <div class="container">
+            <div class="section-title">
+                <h2>Rules & Guidelines</h2>
+            </div>
+            <div class="rules-container">
+                <div class="rule-card">
+                    <div class="rule-header">
+                        <h3>Rule 1: Respect All Players</h3>
+                        <div class="rule-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="rule-content">
+                        <p>Treat all players with respect both in-character and out-of-character. Harassment, discrimination, and toxic behavior will not be tolerated under any circumstances.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-header">
+                        <h3>Rule 2: No Powergaming or Meta-Gaming</h3>
+                        <div class="rule-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="rule-content">
+                        <p>Powergaming and meta-gaming are strictly prohibited. This includes forcing actions on other players, unrealistic scenarios, and using out-of-character information in-character.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-header">
+                        <h3>Rule 3: Stay In Character</h3>
+                        <div class="rule-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="rule-content">
+                        <p>Maintain your character at all times during roleplay scenarios. Breaking character disrupts immersion for other players and diminishes the quality of roleplay.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-header">
+                        <h3>Rule 4: No RDM or VDM</h3>
+                        <div class="rule-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="rule-content">
+                        <p>Random Deathmatch (RDM) and Vehicle Deathmatch (VDM) are strictly prohibited. All hostile actions must have proper roleplay justification.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-header">
+                        <h3>Rule 5: Follow Server Lore</h3>
+                        <div class="rule-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="rule-content">
+                        <p>All roleplay must adhere to the established server lore and timeline. Creating conflicting backstories or ignoring established events is not permitted.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section class="join" id="join">
+        <div class="container">
+            <div class="section-title">
+                <h2>Join NEXORA</h2>
+            </div>
+            <div class="server-status">
+                <div class="status-dot"></div>
+                <span>Server Status: ONLINE</span>
+            </div>
+            <div class="player-count">
+                Currently playing: <span>25/100</span> players
+            </div>
+            <div class="join-buttons">
+                <a href="https://docs.google.com/forms/d/1akDetsCkoc1tXRl3dyst5dBwk5zAK7mhgMmAEX3BL74/viewform" class="btn btn-primary" target="_blank">Start Whitelist Application</a>
+                <a href="https://discord.gg/g6J95ZneG" class="btn btn-secondary" target="_blank">Join Discord</a>
+                <a href="https://chat.whatsapp.com/KLccfi4v1mRFHLQ5WxJ0l8?mode=wwt" class="btn btn-secondary" target="_blank">Join WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://image2url.com/images/1762591092617-985f7599-560c-4f4c-b0ac-fdd5a9d46a6b.jpeg" alt="Nexora Cityscape">
+                    <div class="gallery-caption">CJ House</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://image2url.com/images/1762591019360-51be66cc-47cd-45b0-bf32-d0ade7c7c306.jpeg" alt="Police Chase">
+                    <div class="gallery-caption">Police Chase</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://image2url.com/images/1762590768021-e3bb14c0-c372-4e6e-9559-0072dbc37ba1.jpeg" alt="Police Raid">
+                    <div class="gallery-caption">Police Raid</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://image2url.com/images/1762591156240-05c4f81b-92a1-4d99-a26b-d986d0c2a22a.jpeg" alt="Night Life">
+                    <div class="gallery-caption">Night Life</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://image2url.com/images/1762591252441-5aff80c2-a93a-4334-944a-439b8af1c976.jpeg" alt="Business District">
+                    <div class="gallery-caption">Business District</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://image2url.com/images/1762591309679-ead3b34e-9cec-4088-8f99-2b15d514bb08.jpeg" alt="Helicopter View">
+                    <div class="gallery-caption">Helicopter View</div>
+                </div>
+            </div>
+            <!-- New Button Below Gallery -->
+            <div class="gallery-button-section">
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community" id="community">
+        <div class="container">
+            <div class="section-title">
+                <h2>Community & Contact</h2>
+            </div>
+            <div class="social-icons">
+                <a href="https://discord.gg/g6J95ZneG" class="social-icon" target="_blank">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://www.tiktok.com/@newyorkroleplay08?_r=1&_t=ZS-91CScyevcVs" class="social-icon" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://youtube.com/@newyorkcityrp-l9n?si=bPcXx9Z9eCPu4RJB" class="social-icon" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://chat.whatsapp.com/JrqGvc1pXJ4JQNJeZ5J9o6?mode=wwt" class="social-icon" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <h2>NEXORA ROLEPLAY</h2>
+            </div>
+            <p class="copyright">© 2025 NEXORA ROLEPLAY. All Rights Reserved.</p>
+            <p class="copyright">Designed with ❤️ by the NEXORA Team</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scroll-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // Enhanced Loading animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = document.getElementById('loader');
+            const loaderPercentage = document.getElementById('loader-percentage');
+            const loaderTip = document.getElementById('loader-tip');
+            const loaderParticles = document.getElementById('loader-particles');
+            
+            // Loading tips
+            const tips = [
+                "Initializing futuristic roleplay experience...",
+                "Loading advanced character customization...",
+                "Preparing immersive city environments...",
+                "Synchronizing with global servers...",
+                "Optimizing performance for your device..."
+            ];
+            
+            // Create loader particles
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('loader-particle');
+                
+                // Random size
+                const size = Math.random() * 4 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                
+                loaderParticles.appendChild(particle);
+            }
+            
+            // Simulate loading progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress > 100) progress = 100;
+                
+                loaderPercentage.textContent = `${Math.round(progress)}%`;
+                
+                // Change tip at certain intervals
+                if (progress % 25 === 0) {
+                    const randomTip = tips[Math.floor(Math.random() * tips.length)];
+                    loaderTip.textContent = randomTip;
+                }
+                
+                if (progress === 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loader.classList.add('hidden');
+                    }, 500);
+                }
+            }, 150);
+            
+            // Create particle effect for main page
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size
+                const size = Math.random() * 5 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Rule cards toggle
+            const ruleCards = document.querySelectorAll('.rule-card');
+            ruleCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    card.classList.toggle('active');
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Navigation scroll effect
+            const navbar = document.getElementById('navbar');
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                // Show/hide scroll to top button
+                const scrollTop = document.getElementById('scroll-top');
+                if (window.scrollY > 500) {
+                    scrollTop.classList.add('active');
+                } else {
+                    scrollTop.classList.remove('active');
+                }
+            });
+            
+            // Mobile menu toggle
+            navToggle.addEventListener('click', () => {
+                navToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Scroll to top functionality
+            document.getElementById('scroll-top').addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
